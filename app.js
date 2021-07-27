@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 3000
 const expressLayout = require('express-ejs-layouts')
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -45,6 +44,4 @@ app.post('/seminar', (req, res) => {
     res.redirect('/seminar')
 })
 
-app.listen(port, () => {
-    console.log(`Server is Running at http://localhost:${port}`)
-})
+app.listen(process.env.PORT || 8080)
