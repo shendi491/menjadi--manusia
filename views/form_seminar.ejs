@@ -1,0 +1,89 @@
+<%- contentFor('nav') %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary py-3" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="/">Menjadi Manusia</a>
+            <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-outline-light">
+                Lihat peserta
+            </button>
+            <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
+            <!-- <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Quotes</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                </ul>
+            </div> -->
+        </div>
+    </nav>
+
+    <div class="container mt-5" style="margin-bottom: 12%;">
+        <% if (msg.length !== 0) { %>
+            <div class="alert alert-primary" role="alert">
+                <%= msg %> 
+              </div>
+        <% } %>
+        <div class="row">
+            <div class="col">
+                <form action="/seminar" method="POST">
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" class="form-control" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Asal</label>
+                        <input type="text" class="form-control" name="asal" required>
+                    </div>
+                    <div class="form-group">
+                        <label>No. Handphone</label>
+                        <input type="text" class="form-control" name="nohp" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mengetahui acara seminar dari</label>
+                        <select name="info" class="form-control">
+                            <option value="Teman">Teman</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Line">Line</option>
+                            <option value="Whatsapp">Whatsapp</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary mt-3 mb-5">Kirim</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Peserta Seminar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                        <% n=1 %>
+                            <% pesertaSeminar.forEach(p=> { %>
+                                <li class="list-group item">
+                                    <%= p.nama %>
+                                </li>
+                                <% }) %>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
